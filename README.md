@@ -70,10 +70,24 @@ https://portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation
 
 The code is in ```./translation``` directory.
 
-
 ## 6. Templating in Jinja2
+Based on the article structure, we can create intelligent articles with jinja2 templates which upon rendering, give the article as we desire. The below code snipped shows how we can load the template.
+
+```
+from jinja2 import Environment, FileSystemLoader
+
+file_loader = FileSystemLoader('./')
+env = Environment(loader = file_loader)
+template = env.get_template('./templates/<template>')
+```
+All the templates are present in ```./templates``` directory.
 
 ## 7. Rendering Templates
+While rendering the template, we pass the data required for the template as arguments to the render method. We can either pass data as multiple arguments as key value pairs or create a dictionary and pass as a single argument.
+
+```
+template.render(<data_to_be_passed_to_the_template>)
+```
 
 ## 8. Generating XML Dump
 
