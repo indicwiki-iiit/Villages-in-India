@@ -91,6 +91,13 @@ template.render(<data_to_be_passed_to_the_template>)
 ```
 
 ## 8. Generating XML Dump
+The output of the template is written to an XML file under ```<text></text>``` tags. To get an idea of how the XML file structure should be, open any wikipedia article, go to
+ప్రత్యేక పేజీలు (Special pages) -> పేజీ పనిముట్లు (Page tools; at the bottom of the page) -> ఎగుమతి పేజీలు (Export pages).  
+
+Few points to be noted while generating XML dump:  
+* To get to know your username and userid, export a wikipedia page where you made the latest edit
+* For choosing page id, take a large number (we have taken 1500000) so that it doesn't overlap and overwrite an arleady existing page
 
 ## 9. Sample Article Link
+https://tewiki.iiit.ac.in/index.php?title=%E0%B0%85%E0%B0%B0%E0%B1%8D%E0%B0%97%E0%B1%8B%E0%B0%B5%E0%B0%BE%E0%B0%B2%E0%B1%8D_(%E0%B0%B9%E0%B1%8B%E0%B0%B7%E0%B0%BF%E0%B0%AF%E0%B0%BE%E0%B0%B0%E0%B1%8D%E0%B0%AA%E0%B1%82%E0%B0%B0%E0%B1%8D,_%E0%B0%AA%E0%B0%82%E0%B0%9C%E0%B0%BE%E0%B0%AC%E0%B1%8D)
 
