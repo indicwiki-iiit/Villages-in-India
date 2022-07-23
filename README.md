@@ -14,7 +14,7 @@ Data from both these sources has been merged (JOIN) based on ["State Code", "Sub
 ```
 # left join
 
-mega_data = pd.merge(left = <main_data>, right = <add_data>, 
+mega_data = pd.merge(left = <main_data>, right = <amenities_data>, 
                    left_on = ['State', 'District', 'Subdistt', 'Town/Village'],
                    right_on = ['State Code', 'District Code', 'Sub District Code', 'Village Code'],
                    how = "left")
@@ -38,9 +38,31 @@ https://elevation-api.io/
 
 * ### Open-elevation 
 https://open-elevation.com/  
-This API is a bit slower compared to the above mentioned one.
+This API is a bit slower compared to the above mentioned one.  
+Code for the same is available in ```./elevation``` directory.
 
 ## 4. Transliteration
+There are two options that can be used for transliteration.
+* ### Google-transliteration-api  
+https://pypi.org/project/google-transliteration-api/  
+It is slower than Deeptranslit and does not support batches but with this trade-off comes a better accuracy than Deeptranslit.  
+```
+pip install google-transliteration-api
+```
+
+* ### Deeptranslit  
+https://pypi.org/project/deeptranslit/  
+Deeptranslit is very fast and supports batches of data. It performs better for hindi transliterations than telugu. One can rely on it when the amount of data is huge but the number of unique words is low so that when manual check is done to verify the correctness of the library's transliterations, it won't be a hassle.  
+```
+pip install --upgrade deeptranslit
+
+pip install tensorflow==1.15
+
+pip install keras==2.2.4
+
+pip install 'h5py==2.10.0' --force-reinstall
+```
+Find the code for both methods in ```./transliteration``` directory.
 
 ## 5. Translation
 
