@@ -1,0 +1,55 @@
+{%- macro Infobox(name, state_eng, latitude, longitude, state_tel, district, subdistrict, total_area, elevation, total_population, pincode) -%}
+{{ '{{Infobox settlement' }}
+{%- if name|string != 'nan' %}
+| name   = {{ name }}
+{%- endif %}
+| settlement_type   = గ్రామం 
+{%- if state_eng|string != 'nan' %}
+| pushpin_map   = {{ "India " ~ state_eng ~ "#India" }}
+| pushpin_label_position    = right
+| pushpin_map_alt   = 
+| pushpin_map_caption   = {{ "Location in " ~ state_eng ~ ", India" }}
+{%- endif %}
+{%- if latitude|string != 'nan' and  longitude|string != 'nan' %}
+| coordinates   = {{ "{{coord|" ~ latitude ~ "|N|" ~ longitude ~ "|E|display=inline,title}}" }}
+{%- endif %}
+| subdivision_type	= దేశం 
+| subdivision_name	= {{ "{{flag|India}}" }}
+{%- if state_tel|string != 'nan' %}
+| subdivision_type1	= రాష్ట్రం 
+| subdivision_name1	= [[ {{ state_tel }} ]]
+{%- endif %}
+{%- if district|string != 'nan' %}
+| subdivision_type2 = జిల్లా 
+| subdivision_name2	= {{ district }}
+{%- endif %}
+{%- if subdistrict|string != 'nan' %}
+| subdivision_type3	= ఉప జిల్లా
+| subdivision_name3	= {{ subdistrict }} 
+{%- endif %}
+{%- if total_area|string != 'nan' %}
+| area_total_ha = {{ total_area }}
+{%- endif %}
+{%- if elevation|string != 'nan' %}
+| elevation_m   = {{ elevation }}
+{%- endif %}
+{%- if total_population|string != 'nan' %}
+| population_as_of  = 2011 
+| population_total  = {{ total_population }}
+{%- endif %}
+| timezone1 = {{ "[[Indian Standard Time|IST]]" }}
+| utc_offset1 = +5:30
+{%- if pincode|string != 'nan' and pincode|string != '0' %}
+| postal_code_type  = [[Postal Index Number|PIN]]
+| postal_code   = {{ pincode }}
+{%- endif %}
+{{'}}\n' }}
+{%- endmacro -%}
+
+
+{{- Infobox(name, state_eng, latitude, longitude, state_tel, district, subdistrict, total_area, elevation, total_population, pincode) -}}
+
+
+
+
+

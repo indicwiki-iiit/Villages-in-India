@@ -1,0 +1,55 @@
+{%- macro Governance(name, CD_block, CD_block_code, gram_panchayat, gram_panchayat_code, subdist_HQ, subdist_HQ_dist,
+                     district_HQ, district_HQ_dist, statutory_town, statutory_town_dist, polling_station_status, if_no_dist_PS) -%}
+
+{%- set subheading = "==పరిపాలన==" -%} 
+{%- if CD_block|string != 'nan' and CD_block_code|string != 'nan' %}
+    {%- set line1 = "* సముదాయ అబివృద్ధి బ్లాక్ పేరు " ~ CD_block ~ ". కోడ్ " ~ CD_block_code -%}
+{%- endif %}
+
+{%- if gram_panchayat|string != 'nan' and gram_panchayat_code|string != 'nan' %}
+    {%- set main_ruling = "ఇక్కడ పరిపాలన గ్రామ పంచాయతీ ద్వారా జరుగుతుంది." -%} 
+    {%- set line2 = "* గ్రామ పంచాయతీ పేరు " ~ gram_panchayat ~ ". కోడ్ " ~ gram_panchayat_code  -%}
+{%- endif %}
+
+{%- if subdist_HQ|string != 'nan' and subdist_HQ_dist|string != 'nan' %}
+    {%- set line31 = "* " ~ subdist_HQ ~ " లో ఉప జిల్లా ప్రధాన కార్యాలయం ఉన్నది. ఇది ఊరి నుండి {{convert|" ~ subdist_HQ_dist ~ "|km|mi|0}} దూరం లో ఉన్నది" -%}
+    {%- set line32 = "* ఉప జిల్లా ప్రధాన కార్యాలయం " ~ subdist_HQ ~ "  లో ఉన్నది. ఇది ఊరి నుండి {{convert|" ~ subdist_HQ_dist ~ "|km|mi|0}} దూరం లో ఉన్నది" -%}
+{%- endif %}
+
+{%- if district_HQ|string != 'nan' and district_HQ_dist|string != 'nan' %}
+    {%- set line41 = "* " ~ district_HQ ~ " లో జిల్లా ప్రధాన కార్యాలయం ఉన్నది. ఇది ఊరి నుండి {{convert|" ~ district_HQ_dist ~ "|km|mi|0}} దూరం లో ఉన్నది" -%}
+    {%- set line42 = "* జిల్లా ప్రధాన కార్యాలయం " ~ district_HQ ~ "  లో ఉన్నది. ఇది ఊరి నుండి {{convert|" ~ subdist_HQ_dist ~ "|km|mi|0}} దూరం లో ఉన్నది" -%}
+{%- endif %}
+
+{%- if statutory_town|string != 'nan' and statutory_town_dist|string != 'nan' and name|string != 'nan' %}
+    {%- set line51 = "* " ~ statutory_town ~ " లో " ~ name ~ " కి చట్టబద్ధమైన పట్టణం ఉన్నది. {{convert|" ~ statutory_town_dist ~ "|km|mi|0}} దూరం లో ఉన్నది" -%}
+    {%- set line52 = "* " ~ name ~ " కి చట్టబద్ధమైన పట్టణం " ~ statutory_town ~ " లో ఉన్నది. {{convert|" ~ statutory_town_dist ~ "|km|mi|0}} దూరం లో ఉన్నది" -%}
+{%- endif %}
+
+{%- if polling_station_status|string == '1' %}
+    {%- set line6 = "* అసెంబ్లీ పోలింగ్ స్టేషన్ ఊరిలో ఉన్నది"  -%}
+
+{%- elif polling_station_status|string == '2' and if_no_dist_PS|string != 'nan' %}
+    {%- if if_no_dist_PS|string == 'a' %}
+        {%- set line6 = "* అసెంబ్లీ పోలింగ్ స్టేషన్ ఊరినుండి 5 కి.మీ. కంటే తక్కువ సమీపం లో ఉన్నది"  -%}
+    {%- elif if_no_dist_PS|string == 'b' %}
+        {%- set line6 = "* అసెంబ్లీ పోలింగ్ స్టేషన్ ఊరినుండి 5-10 కి.మీ. సమీపం లో సమీపం లో ఉన్నది"  -%}
+    {%- elif if_no_dist_PS|string == 'c' %}
+        {%- set line6 = "* అసెంబ్లీ పోలింగ్ స్టేషన్ ఊరినుండి 10 కి.మీ. కంటే ఎక్కువ దూరంలో లో ఉన్నది"  -%}
+    {%- endif %}
+{%- endif %}
+
+{{ subheading }}
+{{ main_ruling }}
+{{ line2 }}
+{{ line1 }}
+{{ [line31, line32] | random }}
+{{ [line41, line42] | random }}
+{{ [line51, line52] | random }}
+{{ line6 }}
+
+
+{%- endmacro -%}
+
+{{- Governance(name, CD_block, CD_block_code, gram_panchayat, gram_panchayat_code, subdist_HQ, subdist_HQ_dist,
+               district_HQ, district_HQ_dist, statutory_town, statutory_town_dist, polling_station_status, if_no_dist_PS) -}}

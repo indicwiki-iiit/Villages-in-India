@@ -1,0 +1,109 @@
+{%- macro Paths(nat_highway_s, if_no_dist_nat_highway, state_highway_s, if_no_dist_state_highway,
+                         major_dist_road_s, if_no_dist_major_road, black_top_road_s, gravel_road_s) -%}
+
+{%- set subheading = "==మార్గాలు==" -%} 
+{{ subheading ~ "\n" }}
+
+{%- set line = [] -%} 
+{%- set line_a = [] -%} 
+{%- set line_b = [] -%} 
+{%- set line_c = [] -%}
+{%- set line2 = [] -%}
+
+
+{%- if nat_highway_s|string == '1' %}
+    {%- set line = line + ["జాతీయ రహదారి"] -%}
+
+{%- elif nat_highway_s|string == '2' and if_no_dist_nat_highway|string != 'nan' %}
+    {%- if if_no_dist_nat_highway|string == 'a' %}
+        {%- set line_a = line_a + ["జాతీయ రహదారి"] -%}
+    {%- elif if_no_dist_nat_highway|string == 'b' %}
+        {%- set line_b = line_b + ["జాతీయ రహదారి"] -%}
+    {%- elif if_no_dist_nat_highway|string == 'c' %}
+        {%- set line_c = line_c + ["జాతీయ రహదారి"] -%}
+    {%- endif %}
+{%- endif %}
+
+
+{%- if state_highway_s|string == '1' %}
+    {%- set line = line + ["రాష్ట్ర రహదారి"] -%}
+
+{%- elif state_highway_s|string == '2' and if_no_dist_state_highway|string != 'nan' %}
+    {%- if if_no_dist_state_highway|string == 'a' %}
+        {%- set line_a = line_a + ["రాష్ట్ర రహదారి"] -%}
+    {%- elif if_no_dist_state_highway|string == 'b' %}
+        {%- set line_b = line_b + ["రాష్ట్ర రహదారి"] -%}
+    {%- elif if_no_dist_state_highway|string == 'c' %}
+        {%- set line_c = line_c + ["రాష్ట్ర రహదారి"] -%}
+    {%- endif %}
+{%- endif %}
+
+
+{%- if  major_dist_road_s|string == '1' %}
+    {%- set line = line + ["ప్రధాన జిల్లా రహదారి"] -%}
+
+{%- elif  major_dist_road_s|string == '2' and if_no_dist_major_road|string != 'nan' %}
+    {%- if if_no_dist_major_road|string == 'a' %}
+        {%- set line_a = line_a + ["ప్రధాన జిల్లా రహదారి"] -%}
+    {%- elif if_no_dist_major_road|string == 'b' %}
+        {%- set line_b = line_b + ["ప్రధాన జిల్లా రహదారి"] -%}
+    {%- elif if_no_dist_major_road|string == 'c' %}
+        {%- set line_c = line_c + ["ప్రధాన జిల్లా రహదారి"] -%}
+    {%- endif %}
+{%- endif %}
+
+
+{%- if  black_top_road_s|string == '1' %}
+    {%- set line2 = line2 + ["టార్ రోడ్డు"] -%}
+{%- endif %}
+
+{%- if  gravel_road_s|string == '1' %}
+    {%- set line2 = line2 + ["కంకర రోడ్డు"] -%}
+{%- endif %}
+
+
+{%- if line|length == 1 %}
+    {%- set line = (line + [" ఊరిలోనే ఉన్నది. "]) | join("") -%}
+    {{ "* " ~ line ~ "\n" }}
+{%- elif line|length > 1 %}
+    {%- set line = (line | join(", ")) ~ " ఊరిలోనే ఉన్నాయి. " -%}
+    {{ "* " ~ line ~ "\n" }}
+{%- endif %}
+
+{%- if line_a|length == 1 %}
+    {%- set line_a = (line_a + [" ఊరినుండి 5 కి.మీ. కంటే తక్కువ సమీపం లో ఉన్నది. "]) | join("") -%}
+    {{ "* " ~ line_a ~ "\n" }}
+{%- elif line_a|length > 1 %}
+    {%- set line_a = (line_a | join(", ")) ~ " ఊరినుండి 5 కి.మీ. కంటే తక్కువ సమీపం లో ఉన్నాయి. " -%}
+    {{ "* " ~ line_a ~ "\n" }}
+{%- endif %}
+
+{%- if line_b|length == 1 %}
+    {%- set line_b = (line_b + [" ఊరినుండి 5-10 కి.మీ. సమీపం లో ఉన్నది. "]) | join("") -%}
+    {{ "* " ~ line_b ~ "\n" }}
+{%- elif line_b|length > 1 %}
+    {%- set line_b = (line_b | join(", ")) ~ " ఊరినుండి 5-10 కి.మీ. సమీపం లో ఉన్నాయి. " -%}
+    {{ "* " ~ line_b ~ "\n" }}
+{%- endif %}
+
+{%- if line_c|length == 1 %}
+    {%- set line_c = (line_c + [" ఊరినుండి 10 కి.మీ. కంటే ఎక్కువ దూరంలో లో ఉన్నది."]) | join("") -%}
+    {{ "* " ~ line_c ~ "\n" }}
+{%- elif line_c|length > 1 %}
+    {%- set line_c = (line_c | join(", ")) ~ " ఊరినుండి 10 కి.మీ. కంటే ఎక్కువ దూరంలో లో ఉన్నాయి." -%}
+    {{ "* " ~ line_c ~ "\n" }}
+{%- endif %}
+
+{%- if line2|length == 1 %}
+    {%- set line2 = (line2 + [" ఊరిలోనే ఉన్నది. "]) | join("") -%}
+    {{ "* " ~ line2 ~ "\n" }}
+{%- elif line2|length > 1 %}
+    {%- set line2 = (line2 | join(", ")) ~ " ఊరిలోనే ఉన్నాయి. " -%}
+    {{ "* " ~ line2 ~ "\n" }}
+{%- endif %}
+{{ "\n" }}
+
+{%- endmacro -%}
+
+{{- Paths(nat_highway_s, if_no_dist_nat_highway, state_highway_s, if_no_dist_state_highway,
+                   major_dist_road_s, if_no_dist_major_road, black_top_road_s, gravel_road_s) -}}

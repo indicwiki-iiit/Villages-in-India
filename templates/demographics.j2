@@ -1,0 +1,41 @@
+{%- macro Demographics(general, main_workers, marginal_workers) -%}
+{%- set subheading = "==జన గణాంకాలు==" -%} 
+{{ subheading ~ "\n" }}
+
+{%- set wikitable = '{| class="wikitable" '  -%}
+{%- set cols = "!ప్రమాణం!!మొత్తం!!పురుషులు!!స్త్రీలు" -%}
+{%- set close = "|}" -%}
+{%- set table1 = '|+సాధారణ సమాచారం' ~ "\n|-" -%}
+{%- set table2 = '|+ప్రధాన కార్మికుల సమాచారం' ~ "\n|-" -%}
+{%- set table3 = '|+ఉపాంత కార్మికుల సమాచారం' ~ "\n|-" -%}
+
+{{ wikitable }}
+{{ table1 }}
+{{ cols }}
+{% for row in general -%}
+{{ "|-" }}
+{{ "|" ~ row.field ~ "||" ~ row.total ~ "||" ~ row.men ~ "||" ~ row.women }}
+{% endfor %}
+{{ close }}
+
+{{ wikitable }}
+{{ table2 }}
+{{ cols }}
+{% for row in main_workers -%}
+{{ "|-" }}
+{{ "|" ~ row.field ~ "||" ~ row.total ~ "||" ~ row.men ~ "||" ~ row.women }}
+{% endfor %}
+{{ close }}
+
+{{ wikitable }}
+{{ table3 }}
+{{ cols }}
+{% for row in marginal_workers -%}
+{{ "|-" }}
+{{ "|" ~ row.field ~ "||" ~ row.total ~ "||" ~ row.men ~ "||" ~ row.women }}
+{% endfor %}
+{{ close }}
+{{ "\n" }}
+{%- endmacro -%}
+
+{{- Demographics(general, main_workers, marginal_workers) -}}

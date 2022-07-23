@@ -1,0 +1,103 @@
+{%- macro Public_Welfare(ACS_status, if_no_dist_ACS, PDS_status, if_no_dist_PDS, SHG_status, if_no_dist_SHG,
+                         ASHA_status, if_no_dist_ASHA) -%}
+
+{%- set subheading = "==ప్రజా సంక్షేమం==" -%} 
+{%- set line = [] -%} 
+{%- set line_a = [] -%} 
+{%- set line_b = [] -%} 
+{%- set line_c = [] -%}
+
+{%- if ACS_status|string == '1' %}
+    {%- set line = line + ["వ్యవసాయ క్రెడిట్  సంఘాలు"] -%}
+
+{%- elif ACS_status|string == '2' and if_no_dist_ACS|string != 'nan' %}
+    {%- if if_no_dist_ACS|string == 'a' %}
+        {%- set line_a = line_a + ["వ్యవసాయ క్రెడిట్  సంఘాలు"] -%}
+    {%- elif if_no_dist_ACS|string == 'b' %}
+        {%- set line_b = line_b + ["వ్యవసాయ క్రెడిట్  సంఘాలు"] -%}
+    {%- elif if_no_dist_ACS|string == 'c' %}
+        {%- set line_c = line_c + ["వ్యవసాయ క్రెడిట్  సంఘాలు"] -%}
+    {%- endif %}
+{%- endif %}
+
+
+{%- if PDS_status|string == '1' %}
+    {%- set line = line + ["ప్రజా పంపిణీ వ్యవస్థ (Public Distribution System or PDS)"] -%}
+
+{%- elif PDS_status|string == '2' and if_no_dist_PDS|string != 'nan' %}
+    {%- if if_no_dist_PDS|string == 'a' %}
+        {%- set line_a = line_a + ["ప్రజా పంపిణీ వ్యవస్థ (Public Distribution System or PDS)"] -%}
+    {%- elif if_no_dist_PDS|string == 'b' %}
+        {%- set line_b = line_b + ["ప్రజా పంపిణీ వ్యవస్థ (Public Distribution System or PDS)"] -%}
+    {%- elif if_no_dist_PDS|string == 'c' %}
+        {%- set line_c = line_c + ["ప్రజా పంపిణీ వ్యవస్థ (Public Distribution System or PDS)"] -%}
+    {%- endif %}
+{%- endif %}
+
+
+{%- if SHG_status|string == '1' %}
+    {%- set line = line + ["స్వయం - సహాయక బృందం (Self Help Group or SHG)"] -%}
+
+{%- elif SHG_status|string == '2' and if_no_dist_SHG|string != 'nan' %}
+    {%- if if_no_dist_SHG|string == 'a' %}
+        {%- set line_a = line_a + ["స్వయం - సహాయక బృందం (Self Help Group or SHG)"] -%}
+    {%- elif if_no_dist_SHG|string == 'b' %}
+        {%- set line_b = line_b + ["స్వయం - సహాయక బృందం (Self Help Group or SHG)"] -%}
+    {%- elif if_no_dist_SHG|string == 'c' %}
+        {%- set line_c = line_c + ["స్వయం - సహాయక బృందం (Self Help Group or SHG)"] -%}
+    {%- endif %}
+{%- endif %}
+
+
+{%- if ASHA_status|string == '1' %}
+    {%- set line = line + ["ASHA"] -%} 
+
+{%- elif ASHA_status|string == '2' and if_no_dist_ASHA|string != 'nan' %}
+    {%- if if_no_dist_ASHA|string == 'a' %}
+        {%- set line_a = line_a + ["ASHA"] -%} 
+    {%- elif if_no_dist_ASHA|string == 'b' %}
+        {%- set line_b = line_b + ["ASHA"] -%} 
+    {%- elif if_no_dist_ASHA|string == 'c' %}
+        {%- set line_c = line_c + ["ASHA"] -%} 
+    {%- endif %}
+{%- endif %}
+
+{{ subheading ~ "\n" }}
+
+{%- if line|length == 1 %}
+    {%- set line = (line + [" ఊరిలోనే ఉన్నది. "]) | join("") -%}
+    {{ line }}
+{%- elif line|length > 1 %}
+    {%- set line = (line | join(", ")) ~ " ఊరిలోనే ఉన్నాయి. " -%}
+    {{ line }}
+{%- endif %}
+
+{%- if line_a|length == 1 %}
+    {%- set line_a = (line_a + [" ఊరినుండి 5 కి.మీ. కంటే తక్కువ సమీపం లో ఉన్నది. "]) | join("") -%}
+    {{ line_a }}
+{%- elif line_a|length > 1 %}
+    {%- set line_a = (line_a | join(", ")) ~ " ఊరినుండి 5 కి.మీ. కంటే తక్కువ సమీపం లో ఉన్నాయి. " -%}
+    {{ line_a }}
+{%- endif %}
+
+{%- if line_b|length == 1 %}
+    {%- set line_b = (line_b + [" గ్రామానికి 5-10 కి.మీ. సమీపం లో ఉన్నది. "]) | join("") -%}
+    {{ line_b }}
+{%- elif line_b|length > 1 %}
+    {%- set line_b = (line_b | join(", ")) ~ " గ్రామానికి 5-10 కి.మీ. సమీపం లో ఉన్నాయి. " -%}
+    {{ line_b }}
+{%- endif %}
+
+{%- if line_c|length == 1 %}
+    {%- set line_c = (line_c + [" గ్రామానికి 10 కి.మీ. కంటే ఎక్కువ దూరంలో లో ఉన్నది."]) | join("") -%}
+    {{ line_c }}
+{%- elif line_c|length > 1 %}
+    {%- set line_c = (line_c | join(", ")) ~ " గ్రామానికి 10 కి.మీ. కంటే ఎక్కువ దూరంలో లో ఉన్నాయి." -%}
+    {{ line_c }}
+{%- endif %}
+{{ "\n" }}
+
+{%- endmacro -%}
+
+{{- Public_Welfare(ACS_status, if_no_dist_ACS, PDS_status, if_no_dist_PDS, SHG_status, if_no_dist_SHG,
+                   ASHA_status, if_no_dist_ASHA) -}}

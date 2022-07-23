@@ -1,0 +1,60 @@
+{%- macro In_Village_Healthcare(basic, non_govt) -%}
+{%- set subheading = "==వైద్య సౌకర్యాలు==" -%} 
+{{ subheading }}
+{%- if basic|length > 0 or non_govt|length > 0 %}
+{{ "ఊరి లో ఈ క్రింది వైద్య సౌకర్యాలు ఉన్నాయి." }}
+{%- endif %}
+
+{% for b in basic -%}
+    {%- if b.numbers > 1 %}
+        {%- if b.facility.endswith('కేంద్రం') %}
+            {%- set newf = b.facility | replace('కేంద్రం', "కేంద్రాలు") -%} 
+        {%- elif  b.facility.endswith('క్లినిక్') %}
+            {%- set newf = b.facility | replace('క్లినిక్', "క్లినిక్లు") -%}
+        {%- elif  b.facility.endswith('ఆసుపత్రి') %}
+            {%- set newf = b.facility | replace('ఆసుపత్రి', "ఆసుపత్రులు") -%}
+        {%- endif %}
+        {%- set line =  "* " ~ b.numbers ~ " " ~ newf -%}
+    {%- elif b.numbers == 1 %}
+        {%- set line =  "* " ~ b.numbers ~ " " ~ b.facility -%}
+    {%- endif %}
+
+    {%- if b.n_doctors > 1 %}
+        {%- set line =  line ~ ". " ~ b.n_doctors ~ " వైద్యులు" -%}
+    {%- elif b.n_doctors == 1 %}
+        {%- set line =  line ~ ". " ~ b.n_doctors ~ " డాక్టర్" -%}
+    {%- endif %}
+
+    {%- if b.n_paramedical_staff > 0 %}
+        {%- set line =  line ~ ", " ~ b.n_paramedical_staff ~ " పారా మెడికల్ సిబ్బంది ఉన్నారు" -%}
+    {%- endif %}
+{{ line }}
+{% endfor %}
+
+{%- if non_govt|length > 0 %}
+{{ "===ప్రభుత్వేతర వైద్య సదుపాయాలు===" }}
+{%- endif %}
+{% for b in non_govt -%}
+    {%- if b.numbers > 1 %}
+        {%- if b.facility.endswith('సౌకర్యం') %}
+            {%- set newf = b.facility | replace('సౌకర్యం', "సౌకర్యాలు") -%} 
+        {%- elif  b.facility.endswith('ప్రాక్టీషనర్') %}
+            {%- set newf = b.facility | replace('ప్రాక్టీషనర్', "అభ్యాసకులు") -%}
+        {%- elif  b.facility.endswith('క్లినిక్') %}
+            {%- set newf = b.facility | replace('క్లినిక్', "క్లినిక్లు") -%}
+        {%- elif  b.facility.endswith('దుకాణం') %}
+            {%- set newf = b.facility | replace('దుకాణం', "దుకాణాలు") -%}
+        {%- elif  b.facility.endswith('ఆసుపత్రి') %}
+            {%- set newf = b.facility | replace('ఆసుపత్రి', "ఆసుపత్రులు") -%}
+        {%- endif %}
+        {%- set line2 =  "* " ~ b.numbers ~ " " ~ newf -%}
+    {%- elif b.numbers == 1 %}
+        {%- set line2 =  "* " ~ b.numbers ~ " " ~ b.facility -%}
+    {%- endif %}
+{{ line2 }}
+{% endfor %}
+
+
+{%- endmacro -%}
+
+{{- In_Village_Healthcare(basic, non_govt) -}}

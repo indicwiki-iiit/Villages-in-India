@@ -1,0 +1,46 @@
+{%- macro Village_Info(name, village_code, total_population, total_households, nearest_town, nearest_town_dist, latitude, 
+                       longitude, elevation, total_area) -%}
+
+{%- set subheading = "==గ్రామ విశేషాలు==" -%} 
+
+{%- if village_code|string != 'nan' %}
+    {%- set st1 = "ఈ గ్రామానికి కేటాయించిన కోడ్ " ~ village_code ~ "." -%}
+{%- endif %}
+
+{%- if total_population|string != 'nan' %}
+    {%- set st2 = "2011 జనాభా లెక్కల ప్రకారం గ్రామ జనాభా " ~ total_population ~ "." -%}
+{%- endif %}
+
+{%- if total_households|string != 'nan' and name|string != 'nan' %}
+    {%- set st31 = name ~ "లో " ~ total_households ~ " ఇళ్ళు ఉన్నాయి." -%}
+    {%- set st32 = "ఈ గ్రామంలో " ~ total_households ~ " ఇళ్ళు ఉన్నాయి." -%}
+{%- endif %}
+
+{%- if nearest_town|string != 'nan' and name|string != 'nan' %}
+    {%- set st41 =  "'''" ~ nearest_town ~ "'''" ~ " పట్టణం, " ~ name ~ " గ్రామానికి అతి దగ్గరగా ఉన్న పట్టణం." -%}
+    {%- set st42 =  name ~ " గ్రామానికి అతి దగ్గరగా ఉన్న పట్టణం, '''" ~ nearest_town ~ "'''." -%}
+{%- endif %}
+
+{%- if nearest_town_dist|string != 'nan' %}
+    {%- set st5 =  "ఇది గ్రామానికి {{convert|" ~ nearest_town_dist ~ "|km|mi|2}} లో ఉన్నది." -%}
+{%- endif %}
+
+{%- if nearest_town_dist|string != 'nan' and name|string != 'nan' %}
+    {%- set st6 = " భౌగోళికంగా " ~ name ~ " {{coord|" ~ latitude ~ "|N|" ~ longitude ~ "|E|display=inline}} అక్షాంశ - రేఖాంశాల మద్య" -%}
+{%- endif %}
+
+{%- if elevation|string != 'nan' %}
+    {%- set st7 =  ", సముద్ర మట్టం నుండి {{convert|" ~ elevation ~ "|m|ft|0}} ఎత్తు లో" -%}
+{%- endif %}
+
+{%- if total_area|string != 'nan' %}
+    {%- set st8 =  "ఈ గ్రామ ప్రాంతం పరిమాణం {{convert|" ~ total_area ~ "|ha|km2|2}}." -%}
+{%- endif %}
+{%- set line = [ st2, [st31, st32] | random, st1, [st41, st42] | random, st5, st6, st7 ~ " ఉన్నది.", st8] | join(' ') -%}
+{{ subheading }}
+{{ line }}
+
+{%- endmacro -%}
+
+{{- Village_Info(name, village_code, total_population, total_households, nearest_town, nearest_town_dist, latitude, 
+                 longitude, elevation, total_area) -}}

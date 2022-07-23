@@ -1,0 +1,11 @@
+python render_infobox.py
+python render_intro.py
+python render_village_info.py
+python render_governance.py
+python render_public_welfare.py
+python render_in_village_edu.py
+python render_in_village_hcare.py
+python render_in_village_trport.py
+python render_paths.py
+python render_water_facilities.py
+python render_demographics.py

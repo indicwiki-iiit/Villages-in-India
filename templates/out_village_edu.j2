@@ -1,0 +1,7 @@
+{% for distance_category in educational_centres %}
+=== {{ distance_category }} ===
+{% for village in educational_centres[distance_category] %}
+{{ village }} లో ఉన్నవి:
+{% for education_centre in educational_centres[distance_category][village] %}
+*{{ education_centre }}
+{% endfor %}{% endfor %}{% endfor %}

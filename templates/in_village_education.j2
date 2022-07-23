@@ -1,0 +1,17 @@
+{%- macro In_Village_Education(name, my_lst) -%}
+{%- set subheading = "==విద్యా సౌకర్యాలు==" -%} 
+{{ subheading }}
+{%- if my_lst|length > 0 %}
+{{ name ~ " ఊరి లో ఈ క్రింది విద్యా సౌకర్యాలు ఉన్నాయి." }}
+{%- endif %}
+{% for edu in my_lst -%}
+{%- if edu.numbers > 1 %}
+{{ "* " ~ edu.numbers ~ " " ~ edu.edu_level ~ "లు"}}
+{%- elif edu.numbers == 1 %}
+{{ "* " ~ edu.numbers ~ " " ~ edu.edu_level}}
+{%- endif %}
+{% endfor %}
+
+{%- endmacro -%}
+
+{{- In_Village_Education(name, my_lst) -}}

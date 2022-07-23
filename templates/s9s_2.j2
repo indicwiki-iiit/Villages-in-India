@@ -1,0 +1,210 @@
+==పారిశుధ్యం==
+
+{{ drainage_method }}. డ్రైనేజీ నీటిని నేరుగా {{ drainage_release_method }} విడుదల చేస్తారు.
+
+==సమాచార, రవాణా సౌకర్యాలు==
+===సమాచారం===
+{{ "\n" }}
+{%- if (pincode|string)[-3:] == '-ii' and (pincode|string)[:-3] != '0' %}
+    {%- set st1 = "2017 నాటికి " ~ village_name ~ " లో తపాలా కార్యాలయుము తయారైనది." -%} 
+    {%- set st2 = "భారతీయ తపాలా సమాచారం ప్రకారం ఈ ప్రాంత నిర్దిష్టమైన సూచిక సంఖ్య (Pincode) '''" ~ (pincode|string)[:-3] ~ "'''." -%}
+{{ st1 }} {{ st2 }}
+{%- elif pincode|string != 'nan' and (pincode|string)[-3:] != '-ii' and pincode != 0 %}
+    {%- set st3 = "భారతీయ తపాలా సమాచారం ప్రకారం ఈ ప్రాంత నిర్దిష్టమైన సూచిక సంఖ్య (Pincode) '''" ~ pincode ~ "'''." -%}
+{{ st3 }}
+{%- endif %}
+{%- if comm.z|length > 0 %}
+    {%- if comm.z|length > 1 %}
+        {%- set l1 = "ఇక్కడ " ~ (comm.z | join(", ")) ~ " లభిస్తాయి." -%}
+    {%- elif comm.z|length == 1 %}
+        {%- set l1 = "ఇక్కడ " ~ (comm.z | join(", ")) ~ " లభిస్తుంది." -%}
+    {%- endif %}
+{%- endif %}
+{%- if comm.f|length > 0 %}
+    {%- if comm.f|length > 1 %}
+        {%- set l2 = (comm.f | join(", ")) ~ " ఊరినుండి 5 కి.మీ. కంటే తక్కువ సమీపంలో ఉన్నాయి." -%}
+    {%- elif comm.f|length == 1 %}
+        {%- set l2 = (comm.f | join(", ")) ~ " ఊరినుండి 5 కి.మీ. కంటే తక్కువ సమీపంలో ఉన్నది." -%}
+    {%- endif %}
+{%- endif %}
+{%- if comm.ft|length > 0 %}
+    {%- if comm.ft|length > 1 %}
+        {%- set l3 = (comm.ft | join(", ")) ~ " ఊరినుండి 5-10 కి.మీ. సమీపం లో ఉన్నాయి." -%}
+    {%- elif comm.ft|length == 1 %}
+        {%- set l3 = (comm.ft | join(", ")) ~ " ఊరినుండి 5-10 కి.మీ. సమీపం లో ఉన్నది." -%}
+    {%- endif %}
+{%- endif %}
+{%- if comm.t|length > 0 %}
+    {%- if comm.t|length > 1 %}
+        {%- set l4 = (comm.t | join(", ")) ~ " ఊరినుండి 10 కి.మీ. కంటే ఎక్కువ దూరంలో ఉన్నాయి." -%}
+    {%- elif comm.t|length == 1 %}
+        {%- set l4 = (comm.t | join(", ")) ~ " ఊరినుండి 10 కి.మీ. కంటే ఎక్కువ దూరంలో ఉన్నది." -%}
+    {%- endif %}
+{%- endif %}
+{{ l1 }} {{ l2 }} {{ l3 }} {{ l4 }}
+
+===ఇతర రవాణా===
+
+*{{ railway_service }}
+*{{ bus_service }}
+
+==మార్కెటింగు, బ్యాంకింగు==
+===మార్కెట్లు===
+
+{{ markets }}
+
+===బ్యాంకులు===
+
+*{{ atm }}.
+*{{ banks }}.
+
+==ఆరోగ్యం, పోషణ, వినోద సౌకర్యాలు==
+===పోషణ=== 
+
+{{ nutritional_centers }}
+
+===వినోదం ===
+
+{{ entertainment }}
+
+==భూమి వినియోగం==
+{| class="wikitable"
+|+
+|-
+!ప్రమాణం!!ప్రాంతం (in Hectares)
+|-
+|మొత్తం భౌగోళిక ప్రాంతం||{{ total_area }}
+|-
+|అటవీ ప్రాంతం||{{ forest_area }}
+|-
+|బంజరు భూమి ఇంకా సాగు చేయలేని భూమి ప్రాంతం||{{ uncultivable_land}}
+|-
+|వ్యవసాయేతర ఉపయోగాలలో ఉన్న ప్రాంతం||{{ non_agricultural_land }}
+|-
+|శాశ్వత పచ్చిక బయళ్ళు, ఇతర మేత భూమి ప్రాంతం||{{ grazing_land }}
+|-
+|వివిధ చెట్ల పంటల క్రింద భూమి మొదలైన ప్రాంతం||{{ tree_land }}
+|-
+|ఇతర వ్యర్థ భూమి ప్రాంతం||{{ cultivate_waste_land }}
+|-
+|మొత్తం సాగుచేయబడే ప్రాంతం||{{ sown_area }}
+|-
+|కాలువలు ప్రవహించే ప్రాంతం||{{ canals_area }}
+|-
+|మొత్తం నీటిపారుదలు లేని భూ ప్రాంతం||{{ unirrigated_land }}
+|}
+
+==ఇతర సమాచారం==
+
+{{ other_details }}
+
+===విద్యుత్ సరఫరా===
+{| class="wikitable"
+|+
+|-
+!ప్రమాణం !! లభ్యత !!ఎండాకాలం (గంటలలో) !! చలికాలం (గంటలలో)
+|-
+|గృహ వినియోగం||{{ domestic_power_status }}||{{ domestic_summer_power_usage }}||{{ domestic_winter_power_usage }}
+|-
+|వ్యవసాయ వినియోగం||{{ agriculture_power_status }}||{{ agriculture_summer_power_usage }}||{{ agriculture_winter_power_usage }}
+|-
+|వాణిజ్య వినియోగం||{{ commercial_power_status }}||{{ commercial_summer_power_usage }}||{{ commercial_winter_power_usage }}
+|-
+|వినుయోగాదారులందరికి||{{ all_users_power_status  }}||{{ all_users_summer_power_usage }}||{{ all_users_winter_power_usage }}
+|}
+
+===సరుకులు===
+{%- set line_agri = [] -%} 
+{%- set line_manu = [] -%} 
+{%- set line_hand = [] -%}
+{%- if first_agricultural_commodity|string != '-' %} {# Agricultural #}
+    {%- set line_agri = line_agri + [first_agricultural_commodity] -%}
+{%- endif %}
+{%- if second_agricultural_commodity|string != '-' %}
+    {%- set line_agri = line_agri + [second_agricultural_commodity] -%}
+{%- endif %}
+{%- if third_agricultural_commodity|string != '-' %}
+    {%- set line_agri = line_agri + [third_agricultural_commodity] -%}
+{%- endif %}
+{%- if first_manufacturers_commodity|string != '-' %} {# Manufacturers #}
+    {%- set line_agri = line_manu + [first_manufacturers_commodity] -%}
+{%- endif %}
+{%- if second_manufacturers_commodity|string != '-' %}
+    {%- set line_agri = line_manu + [second_manufacturers_commodity] -%}
+{%- endif %}
+{%- if third_manufacturers_commodity|string != '-' %}
+    {%- set line_agri = line_manu + [third_manufacturers_commodity] -%}
+{%- endif %}
+{%- if first_handicrafts_commodity|string != '-' %} {# Handicrafts #}
+    {%- set line_agri = line_hand + [first_handicrafts_commodity] -%}
+{%- endif %}
+{%- if second_handicrafts_commodity|string != '-' %}
+    {%- set line_agri = line_hand + [second_agricultural_commodity] -%}
+{%- endif %}
+{%- if third_handicrafts_commodity|string != '-' %}
+    {%- set line_agri = line_hand + [third_handicrafts_commodity] -%}
+{%- endif %}
+{%- if line_agri|length > 0 and line_manu|length == 0 and line_hand|length == 0 %}
+    {%- if line_agri|length == 1 %}
+        {%- set line1 = "గ్రామంలో ప్రధాన వ్యవసాయ ఉత్పత్తి, " ~ (line_agri | join("")) ~ "." -%}
+        {%- set line2 = (line_agri | join("")) ~ ", గ్రామంలో లభించే ప్రధాన వ్యవసాయ ఉత్పత్తి." -%}
+    {%- elif line_agri|length > 1 %}
+        {%- set line1 = "గ్రామంలో లభించే ప్రధాన వ్యవసాయ ఉత్పత్తులు, " ~ (line_agri | join(", ")) ~ "." -%}
+        {%- set line2 = (line_agri | join(", ")) ~ ", గ్రామంలో లభించే ప్రధాన వ్యవసాయ ఉత్పత్తులు." -%}
+    {%- endif %}
+{{ [line1, line2] | random }}
+{%- elif line_agri|length == 0 and line_manu|length > 0 and line_hand|length == 0 %}
+    {%- if line_manu|length == 1 %}
+        {%- set line1 = "గ్రామంలో లభించే ప్రధాన తయారీదారుల ఉత్పత్తి, " ~ (line_manu | join("")) ~ "." -%}
+        {%- set line2 = (line_manu | join("")) ~ ", గ్రామంలో లభించే ప్రధాన తయారీదారుల ఉత్పత్తి." -%}
+    {%- elif line_manu|length > 1 %}
+        {%- set line1 = "గ్రామంలో లభించే ప్రధాన తయారీదారుల ఉత్పత్తులు, " ~ (line_manu | join(", ")) ~ "." -%}
+        {%- set line2 = (line_manu | join(", ")) ~ ", గ్రామంలో లభించే ప్రధాన తయారీదారుల ఉత్పత్తులు." -%}
+    {%- endif %}
+{{ [line1, line2] | random }}
+{%- elif line_agri|length == 0 and line_manu|length == 0 and line_hand|length > 0 %}
+    {%- if line_hand|length == 1 %}
+        {%- set line1 = "గ్రామంలో లభించే ప్రధాన హస్తకళల ఉత్పత్తి, " ~ (line_hand | join("")) ~ "." -%}
+        {%- set line2 = (line_manu | join("")) ~ ", గ్రామంలో లభించే ప్రధాన హస్తకళల ఉత్పత్తి." -%}
+    {%- elif line_hand|length > 1 %}
+        {%- set line1 = "గ్రామంలో లభించే ప్రధాన హస్తకళల ఉత్పత్తులు, " ~ (line_hand | join(", ")) ~ "." -%}
+        {%- set line2 = (line_manu | join(", ")) ~ ", గ్రామంలో లభించే ప్రధాన హస్తకళల ఉత్పత్తులు." -%}
+    {%- endif %}
+{{ [line1, line2] | random }}
+{%- elif line_agri|length == 0 and line_manu|length == 0 and line_hand|length == 0  %}
+{{ "" }}
+{%- else %}
+ఈ గ్రామంలోని వివిధ రంగాలలో ప్రధాన ఉత్పత్తులు ఈ క్రింది విధంగా ఉన్నాయి:
+{{ "\n" }}
+    {%- if line_agri|length > 0 %}
+* '''వ్యవసాయం''' - {{ line_agri | join(", ") }}
+    {%- endif %}
+    {%- if line_manu|length > 0 %}
+* '''తయారీదారులు''' - {{ line_manu | join(", ") }}
+    {%- endif %}
+    {%- if line_hand|length > 0 %}
+* '''హస్తకళ''' - {{ line_hand | join(", ") }}
+    {%- endif %}
+{%- endif %}
+
+==మూలాలు==
+{{ "\n" }}
+{%- set category1 = "[[వర్గం:తెవికీ జనావాసాలు]]" -%}
+{%- set category2 = "[[వర్గం:" ~ district_tel ~ " జిల్లా గ్రామాలు]]" -%}
+{%- set category3 = "[[వర్గం:" ~ state_tel ~ " రాష్ట్ర గ్రామాలు]]" -%}
+{{ category1 }}
+{{ category2 }}
+{{ category3 }}
+{#
+{| class="wikitable"
+|+
+|-
+!ప్రమాణం!!మొదటి ప్రధాన!!రెండవ ప్రధాన!!మూడవ ప్రధాన
+|-
+|వ్యవసాయ సరుకులు||{{ first_agricultural_commodity }}||{{ second_agricultural_commodity }}||{{ third_agricultural_commodity }}
+|-
+|తయారీదారుల సరుకులు||{{ first_manufacturers_commodity }}||{{ second_manufacturers_commodity }}||{{ third_manufacturers_commodity }}
+|-
+|హస్తకళల సరుకులు||{{ first_handicrafts_commodity }}||{{ second_handicrafts_commodity }}||{{ third_handicrafts_commodity }}
+|}
+#}

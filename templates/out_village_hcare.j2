@@ -1,0 +1,5 @@
+{% for distance_category in medical_centres %}
+=== {{ distance_category }} === 
+{% for centre in medical_centres[distance_category] %}
+*{{ centre }}
+{% endfor %}{% endfor %}

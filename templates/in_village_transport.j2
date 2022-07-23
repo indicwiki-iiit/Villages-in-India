@@ -1,0 +1,63 @@
+{%- macro In_Village_Transport(public_bus, private_bus, railway, auto, taxi, vans, tractors, cpr_manual, cpr_machine, carts, waterways) -%}
+
+{%- set subheading = "==రవాణా సౌకర్యాలు==" -%} 
+{%- set line = [] -%} 
+
+{%- if public_bus|string == '1' %}
+    {%- set line = line + ["పబ్లిక్ బస్సు సేవ"] -%}
+{%- endif %}
+
+{%- if private_bus|string == '1' %}
+    {%- set line = line + ["ప్రైవేట్ బస్సు సేవ"] -%}
+{%- endif %}
+
+{%- if railway|string == '1' %}
+    {%- set line = line + ["రైలు నిలయం"] -%}
+{%- endif %}
+
+{%- if auto|string == '1' %}
+    {%- set line = line + ["ఆటో సేవ"] -%}
+{%- endif %}
+
+{%- if taxi|string == '1' %}
+    {%- set line = line + ["టాక్సీ"] -%}
+{%- endif %}
+
+{%- if vans|string == '1' %}
+    {%- set line = line + ["వ్యాన్లు"] -%}
+{%- endif %}
+
+{%- if tractors|string == '1' %}
+    {%- set line = line + ["ట్రాక్టర్లు"] -%}
+{%- endif %}
+
+{%- if cpr_manual|string == '1' %}
+    {%- set line = line + ["సైకిల్ తొక్కిన రిక్షాలు (మనుషులు నడిపే)"] -%}
+{%- endif %}
+
+{%- if cpr_machine|string == '1' %}
+    {%- set line = line + ["సైకిల్ తొక్కిన రిక్షాలు (యంత్రాలు నడిపే)"] -%}
+{%- endif %}
+
+{%- if carts|string == '1' %}
+    {%- set line = line + ["జంతువులు నడిపే బండ్లు"] -%}
+{%- endif %}
+
+{%- if waterways|string == '1' %}
+    {%- set line = line + ["సముద్రం/నది/ఫెర్రీ సేవ"] -%}
+{%- endif %}
+
+{%- if line|length == 1 %}
+{{ subheading ~ "\n" }}
+    {%- set line = (line + [" ఊరిలోనే ఉన్నది. "]) | join("") -%}
+    {{ line }}
+{%- elif line|length > 1 %}
+{{ subheading ~ "\n" }}
+    {%- set line = (line | join(", ")) ~ " ఊరిలోనే ఉన్నాయి. " -%}
+    {{ line }}
+{%- endif %}
+{{ "\n" }}
+
+{%- endmacro -%}
+
+{{- In_Village_Transport(public_bus, private_bus, railway, auto, taxi, vans, tractors, crp_manual, cpr_machine, carts, waterways) -}}
