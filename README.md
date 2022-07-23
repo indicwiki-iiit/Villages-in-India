@@ -19,7 +19,9 @@ mega_data = pd.merge(left = <main_data>, right = <amenities_data>,
                    right_on = ['State Code', 'District Code', 'Sub District Code', 'Village Code'],
                    how = "left")
 ```
-Duplicate rows and additional columns that are same in both sources have been dropped.
+Duplicate rows and additional columns that are same in both sources have been dropped.  
+
+* **NOTE :** The resultant data was very unclean. We have cleaned it manually and programmatically using concepts like regular expressions, etc..   
 
 ## 2. Geocoding
 There are two APIs that can be used to fetch geocodes of the villages.  
