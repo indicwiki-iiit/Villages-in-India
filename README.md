@@ -1,6 +1,6 @@
 # Generating Wikipedia Articles on 6,00,000+ Indian Villages in Telugu (Ongoing)
 
-## Data Gathering
+## 1. Data Gathering
 The data consists of 479 different attributes corresponding to
 Indian Villages.  
 Basic information w.r.t villages like the sub district, district, state it belongs to along with their codes and demographics is taken from Census India (2011).  
@@ -21,7 +21,7 @@ mega_data = pd.merge(left = <main_data>, right = <add_data>,
 ```
 Duplicate rows and additional columns that are same in both sources have been dropped.
 
-## Geocoding
+## 2. Geocoding
 There are two APIs that can be used to fetch geocodes of the villages.  
 * ArcGIS Location Service  
 https://developers.arcgis.com/documentation/mapping-apis-and-services/search/geocoding/  
@@ -29,15 +29,17 @@ Code for the same is available to ```./geocodes``` directory.
 
 * Microsoft Azure Maps
 
-## Finding Elevation
+## 3. Finding Elevation
 
-## Transliteration
+## 4. Transliteration
 
-## Translation
+## 5. Translation
 
-## Templating in Jinja2
+## 6. Templating in Jinja2
 
-## Rendering Templates
+## 7. Rendering Templates
 
-## Generating XML Dump
+## 8. Generating XML Dump
+
+## 9. Sample Article Link
 
