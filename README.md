@@ -25,7 +25,7 @@ Duplicate rows and additional columns that are same in both sources have been dr
 There are two APIs that can be used to fetch geocodes of the villages.  
 * ArcGIS Location Service  
 https://developers.arcgis.com/documentation/mapping-apis-and-services/search/geocoding/  
-Code for the same is available to ```./geocodes``` directory.
+Code for the same is available in ```./geocodes``` directory.
 
 * Microsoft Azure Maps
 
