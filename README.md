@@ -71,7 +71,8 @@ https://portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation
 The code is in ```./translation``` directory.
 
 ## 6. Templating in Jinja2
-Based on the article structure, we can create intelligent articles with jinja2 templates which upon rendering, give the article as we desire. The below code snipped shows how we can load the template.
+Based on the article structure, we can create intelligent articles with jinja2 templates which upon rendering, give the article as we desire. The below code snipped shows how we can load the template.  
+https://jinja.palletsprojects.com/en/3.1.x/
 
 ```
 from jinja2 import Environment, FileSystemLoader
