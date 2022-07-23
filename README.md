@@ -34,12 +34,12 @@ There may be more than one result and the result with the highest match confiden
 This can be done with either:  
 * ### Elevation-api  
 https://elevation-api.io/  
-30 requests can be made per second (when making use of an API key) with a maximum batch size of 10 for a GET request.
+30 requests can be made per second (when making use of an API key) with a maximum batch size of 10 for a GET request.  
+Code for the same is available in ```./elevation``` directory.
 
 * ### Open-elevation 
 https://open-elevation.com/  
 This API is a bit slower compared to the above mentioned one.  
-Code for the same is available in ```./elevation``` directory.
 
 ## 4. Transliteration
 There are two options that can be used for transliteration.
@@ -65,6 +65,11 @@ pip install 'h5py==2.10.0' --force-reinstall
 Find the code for both methods in ```./transliteration``` directory.
 
 ## 5. Translation
+The translator we made use of is Microsoft Azure Cognitive Services Translator. It has a 2M character limit per API key.
+https://portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation  
+
+The code is in ```./translation``` directory.
+
 
 ## 6. Templating in Jinja2
 
