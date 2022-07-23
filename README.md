@@ -27,9 +27,18 @@ There are two APIs that can be used to fetch geocodes of the villages.
 https://developers.arcgis.com/documentation/mapping-apis-and-services/search/geocoding/  
 Code for the same is available in ```./geocodes``` directory.
 
-* ### Microsoft Azure Maps
+* ### Microsoft Azure Maps  
+There may be more than one result and the result with the highest match confidence score should be chosen as the geocode for a given location.
 
-## 3. Finding Elevation
+## 3. Finding Elevation  
+This can be done with either:  
+* ### Elevation-api  
+https://elevation-api.io/  
+30 requests can be made per second (when making use of an API key) with a maximum batch size of 10 for a GET request.
+
+* ### Open-elevation 
+https://open-elevation.com/  
+This API is a bit slower compared to the above mentioned one.
 
 ## 4. Transliteration
 
