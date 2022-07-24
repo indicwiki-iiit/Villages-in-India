@@ -12,8 +12,8 @@
 {%- endif %}
 
 {%- if total_households|string != 'nan' and name|string != 'nan' %}
-    {%- set st31 = name ~ "లో " ~ total_households ~ " ఇళ్ళు ఉన్నాయి." -%}
-    {%- set st32 = "ఈ గ్రామంలో " ~ total_households ~ " ఇళ్ళు ఉన్నాయి." -%}
+    {%- set st31 = name ~ "లో " ~ total_households ~ " ఇళ్ళు ఉన్నాయి<ref>https://censusindia.gov.in/census.website/data/census-tables</ref>." -%}
+    {%- set st32 = "ఈ గ్రామంలో " ~ total_households ~ " ఇళ్ళు ఉన్నాయి<ref>https://censusindia.gov.in/census.website/data/census-tables</ref>." -%}
 {%- endif %}
 
 {%- if nearest_town|string != 'nan' and name|string != 'nan' %}

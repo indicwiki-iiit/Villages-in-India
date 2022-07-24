@@ -1,6 +1,6 @@
 # Generating Wikipedia Articles on 6,00,000+ Indian Villages in Telugu (Ongoing)
 
-## 1. Data Gathering
+## 1. Data Gathering 📊
 The data consists of 479 different attributes corresponding to
 Indian Villages.  
 Basic information w.r.t villages like the sub district, district, state it belongs to along with their codes and demographics is taken from Census India (2011).  
@@ -23,7 +23,7 @@ Duplicate rows and additional columns that are same in both sources have been dr
 
 * **NOTE :** The resultant data was very unclean. We have cleaned it manually and programmatically using concepts like regular expressions, etc..   
 
-## 2. Geocoding
+## 2. Geocoding 📍
 There are two APIs that can be used to fetch geocodes of the villages.  
 * ### ArcGIS Location Service  
 https://developers.arcgis.com/documentation/mapping-apis-and-services/search/geocoding/  
@@ -32,7 +32,7 @@ Code for the same is available in ```./geocodes``` directory.
 * ### Microsoft Azure Maps  
 There may be more than one result and the result with the highest match confidence score should be chosen as the geocode for a given location.
 
-## 3. Finding Elevation  
+## 3. Finding Elevation 
 This can be done with either:  
 * ### Elevation-api  
 https://elevation-api.io/  
@@ -43,7 +43,7 @@ Code for the same is available in ```./elevation``` directory.
 https://open-elevation.com/  
 This API is a bit slower compared to the above mentioned one.  
 
-## 4. Transliteration
+## 4. Transliteration 
 There are two options that can be used for transliteration.
 * ### Google-transliteration-api  
 https://pypi.org/project/google-transliteration-api/  
@@ -72,7 +72,7 @@ https://portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation
 
 The code is in ```./translation``` directory.
 
-## 6. Templating in Jinja2
+## 6. Templating in Jinja2 🏯
 Based on the article structure, we can create intelligent articles with jinja2 templates which upon rendering, give the article as we desire. The below code snipped shows how we can load the template.  
 https://jinja.palletsprojects.com/en/3.1.x/
 
@@ -85,14 +85,14 @@ template = env.get_template('./templates/<template>')
 ```
 All the templates are present in ```./templates``` directory.
 
-## 7. Rendering Templates
+## 7. Rendering Templates 🚀
 While rendering the template, we pass the data required for the template as arguments to the render method. We can either pass data as multiple arguments as key value pairs or create a dictionary and pass as a single argument.
 
 ```
 template.render(<data_to_be_passed_to_the_template>)
 ```
 
-## 8. Generating XML Dump
+## 8. Generating XML Dump 
 The output of the template is written to an XML file under ```<text></text>``` tags. To get an idea of how the XML file structure should be, open any wikipedia article, go to
 ప్రత్యేక పేజీలు (Special pages) -> పేజీ పనిముట్లు (Page tools; at the bottom of the page) -> ఎగుమతి పేజీలు (Export pages).  
 
@@ -100,6 +100,6 @@ Few points to be noted while generating XML dump:
 * To get to know your username and userid, export a wikipedia page where you made the latest edit
 * For choosing page id, take a large number (we have taken 1500000) so that it doesn't overlap and overwrite an arleady existing page
 
-## 9. Sample Article Link
+## 9. Sample Article Link 📄
 https://tewiki.iiit.ac.in/index.php?title=%E0%B0%85%E0%B0%B0%E0%B1%8D%E0%B0%97%E0%B1%8B%E0%B0%B5%E0%B0%BE%E0%B0%B2%E0%B1%8D_(%E0%B0%B9%E0%B1%8B%E0%B0%B7%E0%B0%BF%E0%B0%AF%E0%B0%BE%E0%B0%B0%E0%B1%8D%E0%B0%AA%E0%B1%82%E0%B0%B0%E0%B1%8D,_%E0%B0%AA%E0%B0%82%E0%B0%9C%E0%B0%BE%E0%B0%AC%E0%B1%8D)
 
