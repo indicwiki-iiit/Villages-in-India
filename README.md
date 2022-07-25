@@ -47,7 +47,7 @@ This API is a bit slower compared to the above mentioned one.
 There are two options that can be used for transliteration.
 * ### Google-transliteration-api  
 https://pypi.org/project/google-transliteration-api/  
-It is slower than Deeptranslit and does not support batches but with this trade-off comes a better accuracy than Deeptranslit.  
+It is slower than Deeptranslit and does not support batches but with this trade-off comes a better accuracy than Deeptranslit. It powers the Google Input Tools.
 ```
 pip install google-transliteration-api
 ```
