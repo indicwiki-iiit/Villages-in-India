@@ -2,13 +2,13 @@
                      district_HQ, district_HQ_dist, statutory_town, statutory_town_dist, polling_station_status, if_no_dist_PS) -%}
 
 {%- set subheading = "==పరిపాలన==" -%} 
-{%- if CD_block|string != 'nan' and CD_block_code|string != 'nan' %}
-    {%- set line1 = "* సముదాయ అబివృద్ధి బ్లాక్ పేరు " ~ CD_block ~ ". కోడ్ " ~ CD_block_code -%}
+{%- if CD_block|string != 'nan' %}
+    {%- set line1 = "* సముదాయ అబివృద్ధి బ్లాక్ పేరు " ~ CD_block -%}
 {%- endif %}
 
-{%- if gram_panchayat|string != 'nan' and gram_panchayat_code|string != 'nan' %}
+{%- if gram_panchayat|string != 'nan' %}
     {%- set main_ruling = "ఇక్కడ పరిపాలన గ్రామ పంచాయతీ ద్వారా జరుగుతుంది." -%} 
-    {%- set line2 = "* గ్రామ పంచాయతీ పేరు " ~ gram_panchayat ~ ". కోడ్ " ~ gram_panchayat_code  -%}
+    {%- set line2 = "* గ్రామ పంచాయతీ పేరు " ~ gram_panchayat -%}
 {%- endif %}
 
 {%- if subdist_HQ|string != 'nan' and subdist_HQ_dist|string != 'nan' %}

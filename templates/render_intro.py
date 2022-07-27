@@ -31,7 +31,7 @@ def render_intro(sample_df, idx):
     record['state_eng'] = sample_df.loc[idx, 'State Name']
     record['state_hin'] = sample_df.loc[idx, 'State Name Hindi']
 
-    record['dist_reflink'] = sample_df.loc[idx, 'Reflink']
+    record['dist_reflink'] = sample_df.loc[idx, 'District Website']
 
     return template.render(record)
 

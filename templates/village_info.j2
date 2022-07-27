@@ -25,8 +25,8 @@
     {%- set st5 =  "ఇది గ్రామానికి {{convert|" ~ nearest_town_dist ~ "|km|mi|2}} లో ఉన్నది." -%}
 {%- endif %}
 
-{%- if nearest_town_dist|string != 'nan' and name|string != 'nan' %}
-    {%- set st6 = " భౌగోళికంగా " ~ name ~ " {{coord|" ~ latitude ~ "|N|" ~ longitude ~ "|E|display=inline}} అక్షాంశ - రేఖాంశాల మద్య" -%}
+{%- if latitude|string != 'nan' and longitude|string != 'nan' and name|string != 'nan' %}
+    {%- set st6 = "భౌగోళికంగా " ~ name ~ " {{coord|" ~ latitude ~ "|N|" ~ longitude ~ "|E|display=inline}} అక్షాంశ - రేఖాంశాల మద్య" -%}
 {%- endif %}
 
 {%- if elevation|string != 'nan' %}
