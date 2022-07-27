@@ -939,7 +939,8 @@ def get_wikitext (sample_data, k, template):
                             other_details = get_other_details(sample_data, k),
                             nutritional_centers = get_nutritional_status(sample_data, k),
                             state_tel = sample_data.loc[k, 'State Name Telugu'],
-                            district_tel = sample_data.loc[k, 'District Name Telugu']
+                            district_tel = sample_data.loc[k, 'District Name Telugu'],
+                            district_website = sample_data.loc[k, 'District Website']
                             )
     return output
 
