@@ -1,18 +1,22 @@
 {%- macro Intro(name_tel, name_eng, name_hin, subdistrict_tel, subdistrict_eng, subdistrict_hin, district_tel, 
-                district_eng, district_hin, state_tel, state_eng, state_hin) -%}
+                district_eng, district_hin, state_tel, state_eng, state_hin, dist_reflink) -%}
 
 {%- if name_tel|string != 'nan' and name_eng|string != 'nan' %}
-    {%- set st1 = "'''" ~ name_tel ~ "'''" ~ " (Eng: " ~ name_eng ~ ", Hin: " ~ name_hin ~ ") భారత దేశానికి చెందిన గ్రామం." -%}
+    {%- set st1 = "'''" ~ name_tel ~ "'''" ~ " (Eng: " ~ name_eng ~ ", Hin: " ~ name_hin ~ ") భారత దేశానికి చెందిన ఊరు." -%}
 {%- if subdistrict_tel|string != 'nan' and subdistrict_eng|string != 'nan' %}
-    {%- set st2 = "ఇది [[" ~ subdistrict_tel ~ "]]" ~ " (Eng: " ~ subdistrict_eng ~ ", Hin: " ~ subdistrict_hin ~ ") ఉప జిల్లా," -%}
+    {%- set st2 = "ఇది [[" ~ subdistrict_tel ~ "]]" ~ " (Eng: " ~ subdistrict_eng ~ ", Hin: " ~ subdistrict_hin ~ ") తహశీల్ పరిధి," -%}
 {%- endif %}
 {%- if district_tel|string != 'nan' and district_eng|string != 'nan' %}
-    {%- set st3 = "[[" ~ district_tel ~ "]]" ~ " (Eng: " ~ district_eng ~ ", Hin: " ~ district_hin ~ ") జిల్లా," -%}
+    {%- set st3 = "[[" ~ district_tel ~ "]]" ~ " (Eng: " ~ district_eng ~ ", Hin: " ~ district_hin ~ ") జిల్లా" -%}
 {%- endif %}
 {%- if state_tel|string != 'nan' and state_eng|string != 'nan' %}
     {%- set st4 = "[[" ~ state_tel ~ "]]" ~ " (Eng: " ~ state_eng ~ ", Hin: " ~ state_hin ~ ") రాష్ట్రంలో ఉన్నది." -%}
 {%- endif %}
-{%- set line = [st1, st2, st3, st4] | join(' ') -%}
+{%- if dist_reflink|string != 'nan' %}
+    {%- set line = [st1, st2, st3 ~ "<ref>" ~ dist_reflink ~ "</ref>,", st4] | join(' ') -%}
+{%- elif dist_reflink|string == 'nan' %}
+    {%- set line = [st1, st2, st3, st4] | join(' ') -%}
+{%- endif %}
 {{ line }}
 {{ "\n" }}
 
@@ -21,4 +25,4 @@
 {%- endmacro -%}
 
 {{- Intro(name_tel, name_eng, name_hin, subdistrict_tel, subdistrict_eng, subdistrict_hin, district_tel, 
-          district_eng, district_hin, state_tel, state_eng, state_hin) -}}
+          district_eng, district_hin, state_tel, state_eng, state_hin, dist_reflink) -}}

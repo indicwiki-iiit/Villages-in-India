@@ -1,7 +1,9 @@
 {% for distance_category in educational_centres %}
 === {{ distance_category }} ===
 {% for village in educational_centres[distance_category] %}
+{%- if village|string != 'nan' %}
 {{ village }} లో ఉన్నవి:
+{%- endif %}
 {% for education_centre in educational_centres[distance_category][village] %}
 *{{ education_centre }}
 {% endfor %}{% endfor %}{% endfor %}

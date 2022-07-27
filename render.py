@@ -18,7 +18,7 @@ from templates.render_paths import render_paths
 from templates.render_water_facilities import render_water_facilities
 from templates.render_demographics import render_demographics
 
-with open('./test_main.pkl', 'rb') as f:
+with open('./major1.pkl', 'rb') as f:
     sample_df = pickle.load(f)
 
 df_indices = list(sample_df.index)
