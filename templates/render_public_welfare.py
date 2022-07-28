@@ -29,9 +29,9 @@ def render_public_welfare(sample_df, idx):
     # record['name'] = sample_df.loc[df_indices[2], 'Name Telugu']
 
     record['ACS_status'] = type_check(sample_df.loc[idx, 'Agricultural Credit Societies (Status A(1)/NA(2))'])
-    record['if_no_dist_ACS'] = sample_df.loc[idx, '(If Agricultural Credit Societies not available within the ' + 
+    record['if_no_dist_ACS'] = NACheck(sample_df.loc[idx, '(If Agricultural Credit Societies not available within the ' + 
     'village, the distance range code of nearest place where facility is available is given viz; a for < 5 Kms, b for '+
-    '5-10 Kms and c for 10+ kms ). ']
+    '5-10 Kms and c for 10+ kms ). '])
 
     record['PDS_status'] = type_check(sample_df.loc[idx, 'Public Distribution System (PDS) Shop (Status A(1)/NA(2))'])
     record['if_no_dist_PDS'] = NACheck(sample_df.loc[idx, '(If Public Distribution System (PDS) Shop not available within the ' + 
