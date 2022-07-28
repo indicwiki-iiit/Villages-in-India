@@ -11,17 +11,17 @@
     {%- set line2 = "* గ్రామ పంచాయతీ పేరు " ~ gram_panchayat -%}
 {%- endif %}
 
-{%- if subdist_HQ|string != 'nan' and subdist_HQ_dist|string != 'nan' %}
+{%- if subdist_HQ|string != 'nan' and subdist_HQ_dist|string != 'nan' and subdist_HQ_dist|string != '0.0' and subdist_HQ_dist|string != '0' %}
     {%- set line31 = "* " ~ subdist_HQ ~ " లో ఉప జిల్లా ప్రధాన కార్యాలయం ఉన్నది. ఇది ఊరి నుండి {{convert|" ~ subdist_HQ_dist ~ "|km|mi|0}} దూరం లో ఉన్నది" -%}
     {%- set line32 = "* ఉప జిల్లా ప్రధాన కార్యాలయం " ~ subdist_HQ ~ "  లో ఉన్నది. ఇది ఊరి నుండి {{convert|" ~ subdist_HQ_dist ~ "|km|mi|0}} దూరం లో ఉన్నది" -%}
 {%- endif %}
 
-{%- if district_HQ|string != 'nan' and district_HQ_dist|string != 'nan' %}
+{%- if district_HQ|string != 'nan' and district_HQ_dist|string != 'nan' and district_HQ_dist|string != '0.0' and district_HQ_dist|string != '0' %}
     {%- set line41 = "* " ~ district_HQ ~ " లో జిల్లా ప్రధాన కార్యాలయం ఉన్నది. ఇది ఊరి నుండి {{convert|" ~ district_HQ_dist ~ "|km|mi|0}} దూరం లో ఉన్నది" -%}
     {%- set line42 = "* జిల్లా ప్రధాన కార్యాలయం " ~ district_HQ ~ "  లో ఉన్నది. ఇది ఊరి నుండి {{convert|" ~ subdist_HQ_dist ~ "|km|mi|0}} దూరం లో ఉన్నది" -%}
 {%- endif %}
 
-{%- if statutory_town|string != 'nan' and statutory_town_dist|string != 'nan' and name|string != 'nan' %}
+{%- if statutory_town|string != 'nan' and statutory_town_dist|string != 'nan' and statutory_town_dist|string != '0.0' and statutory_town_dist|string != '0' and name|string != 'nan' %}
     {%- set line51 = "* " ~ statutory_town ~ " లో " ~ name ~ " కి చట్టబద్ధమైన పట్టణం ఉన్నది. {{convert|" ~ statutory_town_dist ~ "|km|mi|0}} దూరం లో ఉన్నది" -%}
     {%- set line52 = "* " ~ name ~ " కి చట్టబద్ధమైన పట్టణం " ~ statutory_town ~ " లో ఉన్నది. {{convert|" ~ statutory_town_dist ~ "|km|mi|0}} దూరం లో ఉన్నది" -%}
 {%- endif %}

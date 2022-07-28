@@ -18,6 +18,12 @@ def type_check (param):
     else:
         return int(float(param))
 
+def NACheck (param):
+    if pd.isna(param):
+        return 'nan'
+    else:
+        return param
+
 def render_public_welfare(sample_df, idx):
     record = {}
     # record['name'] = sample_df.loc[df_indices[2], 'Name Telugu']
@@ -28,19 +34,19 @@ def render_public_welfare(sample_df, idx):
     '5-10 Kms and c for 10+ kms ). ']
 
     record['PDS_status'] = type_check(sample_df.loc[idx, 'Public Distribution System (PDS) Shop (Status A(1)/NA(2))'])
-    record['if_no_dist_PDS'] = sample_df.loc[idx, '(If Public Distribution System (PDS) Shop not available within the ' + 
+    record['if_no_dist_PDS'] = NACheck(sample_df.loc[idx, '(If Public Distribution System (PDS) Shop not available within the ' + 
     'village, the distance range code of nearest place where facility is available is given viz; a for < 5 Kms, b for '+
-    '5-10 Kms and c for 10+ kms ). ']
+    '5-10 Kms and c for 10+ kms ). '])
 
     record['SHG_status'] = type_check(sample_df.loc[idx, 'Self - Help Group (SHG) (Status A(1)/NA(2))'])
-    record['if_no_dist_SHG'] = sample_df.loc[idx, '(If Self - Help Group (SHG) not available within the ' + 
+    record['if_no_dist_SHG'] = NACheck(sample_df.loc[idx, '(If Self - Help Group (SHG) not available within the ' + 
     'village, the distance range code of nearest place where facility is available is given viz; a for < 5 Kms, b for '+
-    '5-10 Kms and c for 10+ kms ). ']
+    '5-10 Kms and c for 10+ kms ). '])
 
     record['ASHA_status'] = type_check(sample_df.loc[idx, 'ASHA (Status A(1)/NA(2))'])
-    record['if_no_dist_ASHA'] = sample_df.loc[idx, '(If ASHA not available within the ' + 
+    record['if_no_dist_ASHA'] = NACheck(sample_df.loc[idx, '(If ASHA not available within the ' + 
     'village, the distance range code of nearest place where facility is available is given viz; a for < 5 Kms, b for '+
-    '5-10 Kms and c for 10+ kms ). ']
+    '5-10 Kms and c for 10+ kms ). '])
 
     return template.render(record)
 
