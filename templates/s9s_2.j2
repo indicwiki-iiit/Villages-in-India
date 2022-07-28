@@ -127,22 +127,22 @@
     {%- set line_agri = line_agri + [third_agricultural_commodity] -%}
 {%- endif %}
 {%- if first_manufacturers_commodity|string != '-' %} {# Manufacturers #}
-    {%- set line_agri = line_manu + [first_manufacturers_commodity] -%}
+    {%- set line_manu = line_manu + [first_manufacturers_commodity] -%}
 {%- endif %}
 {%- if second_manufacturers_commodity|string != '-' %}
-    {%- set line_agri = line_manu + [second_manufacturers_commodity] -%}
+    {%- set line_manu = line_manu + [second_manufacturers_commodity] -%}
 {%- endif %}
 {%- if third_manufacturers_commodity|string != '-' %}
-    {%- set line_agri = line_manu + [third_manufacturers_commodity] -%}
+    {%- set line_manu = line_manu + [third_manufacturers_commodity] -%}
 {%- endif %}
 {%- if first_handicrafts_commodity|string != '-' %} {# Handicrafts #}
-    {%- set line_agri = line_hand + [first_handicrafts_commodity] -%}
+    {%- set line_hand = line_hand + [first_handicrafts_commodity] -%}
 {%- endif %}
 {%- if second_handicrafts_commodity|string != '-' %}
-    {%- set line_agri = line_hand + [second_agricultural_commodity] -%}
+    {%- set line_hand = line_hand + [second_agricultural_commodity] -%}
 {%- endif %}
 {%- if third_handicrafts_commodity|string != '-' %}
-    {%- set line_agri = line_hand + [third_handicrafts_commodity] -%}
+    {%- set line_hand = line_hand + [third_handicrafts_commodity] -%}
 {%- endif %}
 {%- if line_agri|length > 0 and line_manu|length == 0 and line_hand|length == 0 %}
     {%- if line_agri|length == 1 %}
@@ -165,17 +165,16 @@
 {%- elif line_agri|length == 0 and line_manu|length == 0 and line_hand|length > 0 %}
     {%- if line_hand|length == 1 %}
         {%- set line1 = "గ్రామంలో లభించే ప్రధాన హస్తకళల ఉత్పత్తి, " ~ (line_hand | join("")) ~ "." -%}
-        {%- set line2 = (line_manu | join("")) ~ ", గ్రామంలో లభించే ప్రధాన హస్తకళల ఉత్పత్తి." -%}
+        {%- set line2 = (line_hand | join("")) ~ ", గ్రామంలో లభించే ప్రధాన హస్తకళల ఉత్పత్తి." -%}
     {%- elif line_hand|length > 1 %}
         {%- set line1 = "గ్రామంలో లభించే ప్రధాన హస్తకళల ఉత్పత్తులు, " ~ (line_hand | join(", ")) ~ "." -%}
-        {%- set line2 = (line_manu | join(", ")) ~ ", గ్రామంలో లభించే ప్రధాన హస్తకళల ఉత్పత్తులు." -%}
+        {%- set line2 = (line_hand | join(", ")) ~ ", గ్రామంలో లభించే ప్రధాన హస్తకళల ఉత్పత్తులు." -%}
     {%- endif %}
 {{ [line1, line2] | random }}
 {%- elif line_agri|length == 0 and line_manu|length == 0 and line_hand|length == 0  %}
 {{ "" }}
 {%- else %}
 ఈ గ్రామంలోని వివిధ రంగాలలో ప్రధాన ఉత్పత్తులు ఈ క్రింది విధంగా ఉన్నాయి:
-{{ "\n" }}
     {%- if line_agri|length > 0 %}
 * '''వ్యవసాయం''' - {{ line_agri | join(", ") }}
     {%- endif %}

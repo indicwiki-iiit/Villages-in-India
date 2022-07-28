@@ -18,20 +18,20 @@ from templates.render_paths import render_paths
 from templates.render_water_facilities import render_water_facilities
 from templates.render_demographics import render_demographics
 
-with open('./major2.pkl', 'rb') as f:
+with open('./major1.pkl', 'rb') as f:
     sample_df = pickle.load(f)
 
 df_indices = list(sample_df.index)
-# sample_df['PIN Code'] = sample_df['PIN Code'].astype('str')
+sample_df['PIN Code'] = sample_df['PIN Code'].astype('str')
 
 current_page_id = 1500000
 
 
     # print(str(idx) + "\n\n")
-with open("test.xml", 'a', encoding = "utf-8") as fobj:
+with open("village_test.xml", 'a', encoding = "utf-8") as fobj:
     fobj.write(tewiki + "\n")
 
-    for idx in df_indices[33606:]:
+    for idx in df_indices:
         # if idx == 1149 or idx == 91738:
             # continue
         infobox = render_infobox(sample_df, idx)
