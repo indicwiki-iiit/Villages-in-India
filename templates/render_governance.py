@@ -18,19 +18,25 @@ def type_check (param):
     else:
         return int(float(param))
 
+def NACheck (param):
+    if pd.isna(param):
+        return 'nan'
+    else:
+        return param
+
 
 def render_governance(sample_df, idx):
     record = {}
     record['name'] = sample_df.loc[idx, 'Name Telugu']
-    record['CD_block'] = sample_df.loc[idx, 'CD Block Name Telugu']
+    record['CD_block'] = NACheck(sample_df.loc[idx, 'CD Block Name Telugu'])
     # record['CD_block_code'] = int(sample_df.loc[idx, 'CD Block Code'])
-    record['gram_panchayat'] = sample_df.loc[idx, 'Gram Panchayat Name Telugu']
+    record['gram_panchayat'] = NACheck(sample_df.loc[idx, 'Gram Panchayat Name Telugu'])
     # record['gram_panchayat_code'] = int(sample_df.loc[idx, 'Gram Panchayat Code'])
-    record['subdist_HQ'] = sample_df.loc[idx, 'Sub District Head Quarter (Name) Telugu']
+    record['subdist_HQ'] = NACheck(sample_df.loc[idx, 'Sub District Head Quarter (Name) Telugu'])
     record['subdist_HQ_dist'] = sample_df.loc[idx, 'Sub District Head Quarter (Distance in km)']
-    record['district_HQ'] = sample_df.loc[idx, 'District Head Quarter (Name) Telugu']
+    record['district_HQ'] = NACheck(sample_df.loc[idx, 'District Head Quarter (Name) Telugu'])
     record['district_HQ_dist'] = sample_df.loc[idx, 'District Head Quarter (Distance in km)']
-    record['statutory_town'] = sample_df.loc[idx, 'Nearest Statutory Town (Name) Telugu']
+    record['statutory_town'] = NACheck(sample_df.loc[idx, 'Nearest Statutory Town (Name) Telugu'])
     record['statutory_town_dist'] = sample_df.loc[idx, 'Nearest Statutory Town (Distance in km)']
     record['polling_station_status'] = type_check(sample_df.loc[idx, 'Assembly Polling Station (Status A(1)/NA(2))'])
 

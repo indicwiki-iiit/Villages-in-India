@@ -5,13 +5,9 @@
 ==సమాచార, రవాణా సౌకర్యాలు==
 ===సమాచారం===
 {{ "\n" }}
-{%- if (pincode|string)[-3:] == '-ii' and (pincode|string)[:-3] != '0' %}
-    {%- set st1 = "2017 నాటికి " ~ village_name ~ " లో తపాలా కార్యాలయుము తయారైనది." -%} 
-    {%- set st2 = "భారతీయ తపాలా సమాచారం ప్రకారం ఈ ప్రాంత నిర్దిష్టమైన సూచిక సంఖ్య (Pincode) '''" ~ (pincode|string)[:-3] ~ "'''." -%}
-{{ st1 }} {{ st2 }}
-{%- elif pincode|string != 'nan' and (pincode|string)[-3:] != '-ii' and pincode != 0 %}
-    {%- set st3 = "భారతీయ తపాలా సమాచారం ప్రకారం ఈ ప్రాంత నిర్దిష్టమైన సూచిక సంఖ్య (Pincode) '''" ~ pincode ~ "'''." -%}
-{{ st3 }}
+{%- if pincode|string != 'nan' %}
+    {%- set st = "భారతీయ తపాలా సమాచారం ప్రకారం ఈ ప్రాంత నిర్దిష్టమైన సూచిక సంఖ్య (Pincode) '''" ~ pincode ~ "'''." -%}
+{{ st }}
 {%- endif %}
 {%- if comm.z|length > 0 %}
     {%- if comm.z|length > 1 %}

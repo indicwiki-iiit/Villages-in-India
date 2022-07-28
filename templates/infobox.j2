@@ -39,7 +39,7 @@
 {%- endif %}
 | timezone1 = {{ "[[Indian Standard Time|IST]]" }}
 | utc_offset1 = +5:30
-{%- if pincode|string != 'nan' and pincode|string != '0' %}
+{%- if pincode|string != 'nan' %}
 | postal_code_type  = [[Postal Index Number|PIN]]
 | postal_code   = {{ pincode }}
 {%- endif %}

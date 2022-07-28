@@ -48,19 +48,24 @@ def type_check (param):
 
 
 # sample_data['Pincode'] = sample_data['Pincode'].astype(int)
-def decide_pincode (pin1, pin2):
-    if pin1 == pin2 and str(pin1) != 'nan' and str(pin2) != 'nan':
-        return int(pin1)
-    elif str(pin1) == 'nan' and str(pin2) != 'nan':
-        pin2 = float(pin2)
-        return int(pin2)
-    elif str(pin1) != 'nan' and str(pin2) == 'nan':
-        return str(int(pin1)) + "-ii"
-    elif pin1 != pin2 and str(pin1) != 'nan' and str(pin2) != 'nan':
-        pin2 = float(pin2)
-        return int(pin2)
-    else: # both pin1 and pin2 are null
-        return pin1
+# def decide_pincode (pin1, pin2):
+#     if pin1 == pin2 and str(pin1) != 'nan' and str(pin2) != 'nan':
+#         return int(pin1)
+#     elif str(pin1) == 'nan' and str(pin2) != 'nan':
+#         pin2 = float(pin2)
+#         return int(pin2)
+#     elif str(pin1) != 'nan' and str(pin2) == 'nan':
+#         return str(int(pin1)) + "-ii"
+#     elif pin1 != pin2 and str(pin1) != 'nan' and str(pin2) != 'nan':
+#         pin2 = float(pin2)
+#         return int(pin2)
+#     else: # both pin1 and pin2 are null
+#         return pin1
+def decide_pincode (pin):
+    if pd.isna(pin):
+        return 'nan'
+    else:
+        return int(float(pin))
 # In[41]:
 
 
@@ -887,7 +892,7 @@ def get_wikitext (sample_data, k, template):
                             # post_office_status = get_post_office_status(sample_data, k),
 
                             # pincode = sample_data.loc[k, ('Pincode')],
-                            pincode = decide_pincode(sample_data.loc[k, ('Pincode')], sample_data.loc[k, ('PIN Code')]),
+                            pincode = decide_pincode(sample_data.loc[k, ('Pincode')]),
                             comm = get_communication(sample_data, k),
 
                             # landline_status = get_landline_status(sample_data, k),

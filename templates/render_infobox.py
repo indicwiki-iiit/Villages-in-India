@@ -21,19 +21,11 @@ def capcase_state_eng (state):
 # sample_df.loc[ idx, 'Pincode' ] = np.nan
 # sample_df.loc[ idx, 'PIN Code' ] = 344025
 
-def decide_pincode (pin1, pin2):
-    if pin1 == pin2 and str(pin1) != 'nan' and str(pin2) != 'nan':
-        return int(pin1)
-    elif str(pin1) == 'nan' and str(pin2) != 'nan':
-        pin2 = float(pin2)
-        return int(pin2)
-    elif str(pin1) != 'nan' and str(pin2) == 'nan':
-        return int(pin1)
-    elif pin1 != pin2 and str(pin1) != 'nan' and str(pin2) != 'nan':
-        pin2 = float(pin2)
-        return int(pin2)
-    else: # both pin1 and pin2 are null
-        return pin1
+def decide_pincode (pin):
+    if pd.isna(pin):
+        return 'nan'
+    else:
+        return int(float(pin))
 
 
 file_loader = FileSystemLoader('./')
@@ -53,7 +45,7 @@ def render_infobox(sample_df, idx):
     record['total_area'] = sample_df.loc[idx, 'Total Geographical Area (in Hectares)']
     record['elevation'] = sample_df.loc[idx, 'Elevation']
     record['total_population'] = sample_df.loc[idx, 'TOT_P']
-    record['pincode'] = decide_pincode ( sample_df.loc[idx, 'Pincode'], sample_df.loc[idx, 'PIN Code'] )
+    record['pincode'] = decide_pincode ( sample_df.loc[idx, 'Pincode'] )
     # print( record['pincode'] )
     return template.render(record)
 
