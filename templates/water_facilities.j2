@@ -1,7 +1,8 @@
 {%- macro Water_Facilities(full_year, only_summer) -%}
 {%- set subheading = "==నీటి వసతులు==" -%} 
+{%- if full_year|length > 0 or only_summer|length > 0 %}
 {{ subheading ~ "\n" }}
-
+{%- endif %}
 {%- if full_year|length == 1 %}
     {%- set full_year = (full_year + [" సంవత్సరం మొత్తం లభిస్తుంది. "]) | join("") -%}
     {{ full_year }}
@@ -9,7 +10,6 @@
     {%- set full_year = (full_year | join(", ")) ~ " ఇక్కడ సంవత్సరం మొత్తం లభిస్తాయి. " -%}
     {{ full_year }}
 {%- endif %}
-
 {%- if only_summer|length == 1 %}
     {%- set only_summer = (only_summer + [" సంవత్సరం మొత్తం లభిస్తుంది."]) | join("") -%}
     {{ only_summer }}
