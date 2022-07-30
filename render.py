@@ -1,12 +1,8 @@
-# from jinja2 import Environment, FileSystemLoader
 import pickle
 from random import sample
 from genXML import tewiki, write_to_page
 from render_test_2 import get_wikitext
-# import pandas as pd
-# import numpy as np
-# import sys
-# sys.path.append('./templates')
+
 from templates.render_infobox import render_infobox
 from templates.render_intro import render_intro
 from templates.render_village_info import render_village_info
@@ -19,17 +15,17 @@ from templates.render_paths import render_paths
 from templates.render_water_facilities import render_water_facilities
 from templates.render_demographics import render_demographics
 
-with open('./rajasthan.pkl', 'rb') as f:
+with open('./up.pkl', 'rb') as f:
     sample_df = pickle.load(f)
 
 df_indices = list(sample_df.index)
 
 dist_codes = sample_df['District'].unique()
 
-current_page_id = 1500000
+current_page_id = 1677015 + 1
 
 for dc in dist_codes:
-    with open("./XML_dumps/" + str(dc) + ".xml", 'a', encoding = "utf-8") as fobj:
+    with open("./XML_dumps/up/" + str(dc) + ".xml", 'a', encoding = "utf-8") as fobj:
         fobj.write(tewiki + "\n")
 
         for idx in df_indices:
