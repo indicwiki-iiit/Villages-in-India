@@ -15,17 +15,18 @@ from templates.render_paths import render_paths
 from templates.render_water_facilities import render_water_facilities
 from templates.render_demographics import render_demographics
 
-with open('./meghalaya_part1.pkl', 'rb') as f:
+with open('./others.pkl', 'rb') as f:
     sample_df = pickle.load(f)
 
 df_indices = list(sample_df.index)
 
-dist_codes = sample_df['District'].unique()
+dist_codes = sample_df[ sample_df['State Name'] == 'NCT OF DELHI' ]['District'].unique()
 
-current_page_id = 1793253 + 1
+# current_page_id = 1793253 + 1
+current_page_id = 1665021
 
 for dc in dist_codes:
-    with open("./XML_dumps/meghalaya_part1/" + str(dc) + ".xml", 'a', encoding = "utf-8") as fobj:
+    with open("./XML_dumps/others_except_meghalaya/" + str(dc) + ".xml", 'a', encoding = "utf-8") as fobj:
         fobj.write(tewiki + "\n")
 
         for idx in df_indices:
