@@ -1,4 +1,4 @@
-# Generating Wikipedia Articles on 6,00,000+ Indian Villages in Telugu (Ongoing)
+# Generating Wikipedia Articles on 6,00,000+ Indian Villages in Telugu
 
 ## 1. Data Gathering 📊
 The data consists of 479 different attributes corresponding to
